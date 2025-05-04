@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Language Voting</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Vote for Your Favorite Programming Language</h1>
+        <p class="server-info">Server: {{ hostname }}</p>
+        
+        <form action="/vote" method="post">
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="python" name="language" value="Python">
+                    <label for="python">Python</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="javascript" name="language" value="JavaScript">
+                    <label for="javascript">JavaScript</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="java" name="language" value="Java">
+                    <label for="java">Java</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="go" name="language" value="Go">
+                    <label for="go">Go</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="ruby" name="language" value="Ruby">
+                    <label for="ruby">Ruby</label>
+                </div>
+            </div>
+            <button type="submit" class="vote-button">Vote</button>
+        </form>
+        
+        <a href="/results" class="view-results">View Results</a>
+    </div>
+</body>
+</html>

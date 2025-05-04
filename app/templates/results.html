@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Poll Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            text-align: center;
+            padding: 30px;
+        }
+        .results-box {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .option {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        .bar {
+            background: #3498db;
+            height: 24px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-box">
+        <h2>Poll Results</h2>
+        {% for option, votes in results.items() %}
+            <div class="option">
+                <strong>{{ option }}:</strong> {{ votes }} vote{{ '' if votes == 1 else 's' }}
+                <div class="bar" style="width: {{ (votes / total_votes * 100) if total_votes else 0 }}%"></div>
+            </div>
+        {% endfor %}
+        <p>Total Votes: {{ total_votes }}</p>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>
